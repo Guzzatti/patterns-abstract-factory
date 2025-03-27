@@ -1,29 +1,17 @@
-import { AndroidButton, iOSButton } from "./components/button";
-import { AndroidTextBox, iOSTextBox } from "./components/textbox";
+import { ToyFactory } from './toys/interfaces';
+import { PlasticToyFactory } from './toys/plasticToys';
+import { WoodenToyFactory } from './toys/woodenToys';
 
-class Application {
-  private button: any;
-  private textBox: any;
+function testToyFactory(factory: ToyFactory): void {
+  const car = factory.createCar();
+  const doll = factory.createDoll();
 
-  constructor(os: string) {
-    if (os === "Android") {
-      this.button = new AndroidButton();
-      this.textBox = new AndroidTextBox();
-    } else if (os === "iOS") {
-      this.button = new iOSButton();
-      this.textBox = new iOSTextBox();
-    } else {
-      throw new Error("Sistema operacional não suportado!");
-    }
-  }
-
-  renderUI(): void {
-    this.button.render();
-    this.textBox.render();
-  }
+  car.play();
+  doll.play();
 }
 
-const userOS = "iOS";
-const app = new Application(userOS);
+console.log("Fábrica de Plástico:");
+testToyFactory(new PlasticToyFactory());
 
-app.renderUI();
+console.log("\nFábrica de Madeira:");
+testToyFactory(new WoodenToyFactory());
