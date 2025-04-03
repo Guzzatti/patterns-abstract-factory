@@ -22,3 +22,19 @@ const simpleBurger = new BurgerOrderBuilder()
 
 console.log("\nPedido simples realizado:");
 console.log(simpleBurger.description());
+
+import { BurgerDirector } from "./BurgerDirector";
+
+console.log("\nPedidos com diretor:");
+const builder = new BurgerOrderBuilder();
+const director = new BurgerDirector(builder);
+
+director.makeNoTomato();
+console.log(builder.build().description());
+
+director.makeClassic();
+console.log(builder.build().description());
+
+director.makeVegetarian();
+console.log(builder.build().description());
+
