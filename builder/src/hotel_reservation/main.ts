@@ -19,3 +19,18 @@ const budgetReservation = new HotelReservationBuilder()
 
 console.log("\nReserva 2:");
 console.log(budgetReservation.description());
+
+import { HotelReservationDirector } from "./HotelReservationDirector";
+
+console.log("\nReservas com diretor:");
+const hotelBuilder = new HotelReservationBuilder();
+const hotelDirector = new HotelReservationDirector(hotelBuilder);
+
+hotelDirector.noBreakfast();
+console.log(hotelBuilder.build().description());
+
+hotelDirector.luxury();
+console.log(hotelBuilder.build().description());
+
+hotelDirector.standard();
+console.log(hotelBuilder.build().description());
