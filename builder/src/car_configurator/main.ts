@@ -27,3 +27,18 @@ try {
 } catch (error: any) {
   console.error("\nErro ao montar carro inválido:", error.message);
 }
+
+import { CarDirector } from "./CarDirector";
+
+console.log("\nCarros com diretor:");
+const carBuilder = new CarBuilder();
+const carDirector = new CarDirector(carBuilder);
+
+carDirector.economicManual();
+console.log(carBuilder.build().description());
+
+carDirector.sportAutomatic();
+console.log(carBuilder.build().description());
+
+carDirector.luxuryElectric();
+console.log(carBuilder.build().description());
